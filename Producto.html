@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Servicios | Mi Empresa</title>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #c099c3;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background-color: #ffe8fc;
+      border-bottom: 2px solid #e84b82;
+    }
+
+    header div {
+      font-size: 28px;
+      font-weight: bold;
+      color: #d2268a;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #b0176e;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .seccion-servicios {
+      padding: 50px 20px;
+      background-color: #c099c3;
+      text-align: center;
+    }
+
+    .titulo-seccion {
+      font-size: 2.2em;
+      margin-bottom: 30px;
+      animation: latir 1.5s infinite ease-in-out;
+    }
+
+    .contenedor-servicios {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: nowrap;
+      gap: 30px;
+      overflow-x: auto;
+      padding: 10px;
+    }
+
+    .servicio-card {
+      background-color: #fff;
+      flex: 0 0 auto;
+      width: 300px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: rebote 2.5s infinite;
+    }
+
+    .servicio-card.reveal {
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 0.6s ease-out;
+    }
+
+    .servicio-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .servicio-card h3 {
+      margin: 15px 0 5px;
+      color: #333;
+    }
+
+    .precio {
+      font-weight: bold;
+      color: #007bff;
+      margin: 5px 0;
+      animation: latir 1.5s infinite ease-in-out;
+    }
+
+    .descripcion {
+      padding: 0 15px 20px;
+      color: #555;
+      font-size: 0.95em;
+    }
+
+    .servicio-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    @keyframes latir {
+      0%, 100% {
+        transform: scale(1);
+      }
+      25% {
+        transform: scale(1.1);
+      }
+      50% {
+        transform: scale(0.95);
+      }
+      75% {
+        transform: scale(1.05);
+      }
+    }
+
+    @keyframes rebote {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      30% {
+        transform: translateY(-15px);
+      }
+      50% {
+        transform: translateY(5px);
+      }
+      70% {
+        transform: translateY(-8px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <section class="full-width-section">
+    <header class="content-wrapper">
+      <div>Cyzone</div>
+      <nav>
+        <a href="index.html">Inicio</a>
+        <a href="Producto.html">Productos</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </header>
+  </section>
+
+  <section id="servicios" class="seccion-servicios">
+    <h2 class="titulo-seccion">Nuestros Productos</h2>
+    <div class="contenedor-servicios">
+      <div class="servicio-card">
+        <img src="labial.jpg" alt="Labial Líquido">
+        <h3>Labial Líquido Mate “Studio Look” color Blossom Nude (6 ml)</h3>
+        <p class="precio">S/ 18.90</p>
+        <p class="descripcion">Acabado mate de larga duración, ideal para uso diario. Viene en un tono neutro rosado que aporta elegancia sin resecar los labios.</p>
+      </div>
+      <div class="servicio-card">
+        <img src="colonia.jpg" alt="Perfume">
+        <h3>Perfume de Mujer “Prints” 30 ml</h3>
+        <p class="precio">S/ 18.90 </p>
+        <p class="descripcion">Fragancia femenina intensa y moderna, ideal para el día a día o salidas especiales. Viene en presentación compacta de 30 ml, perfecta para llevar en el bolso o de viaje.</p>
+      </div>
+      <div class="servicio-card">
+        <img src="balsamo.jpg" alt="Bálsamo Labial">
+        <h3>Bálsamo Labial “Creamy Lip Balm” línea CyPlay (3 g)</h3>
+        <p class="precio">S/ 39.00</p>
+        <p class="descripcion">Bálsamo nutritivo y cremoso, con ingredientes suavizantes para mantener los labios hidratados durante todo el día. Viene en versiones como “Cherry” o “Berry”.</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Mostrar los servicios al hacer scroll
+    function revealCards() {
+      const cards = document.querySelectorAll('.servicio-card');
+      const triggerBottom = window.innerHeight * 0.85;
+
+      cards.forEach(card => {
+        const cardTop = card.getBoundingClientRect().top;
+
+        if (cardTop < triggerBottom) {
+          card.classList.add('reveal');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', revealCards);
+    window.addEventListener('load', revealCards);
+  </script>
+
+</body>
+</html>

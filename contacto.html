@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cyzone + Formulario de Contacto</title>
+  <style>
+    /* Fondo animado para todo el body */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      color: #8b0a59;
+      background: linear-gradient(135deg, #ffc0cb, #800080);
+      animation: fondoAnimado 10s infinite alternate;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    @keyframes fondoAnimado {
+      0% { background: linear-gradient(135deg, #ffc0cb, #800080); }
+      100% { background: linear-gradient(135deg, #800080, #ffc0cb); }
+    }
+
+    /* Container general para extender el fondo blanco al 100% ancho */
+    .full-width-section {
+      background-color: #fff0f6; /* color blanco rosado */
+      width: 100vw; /* ancho completo de ventana */
+      padding: 20px 0;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Wrapper con max-width para centrar contenido sin estirarlo */
+    .content-wrapper {
+      max-width: 1200px;
+      width: 100%;
+      padding: 0 30px;
+      box-sizing: border-box;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background-color: #ffe8fc;
+      border-bottom: 2px solid #e84b82;
+    }
+
+    header div {
+      font-size: 28px;
+      font-weight: bold;
+      color: #d2268a;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #b0176e;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Sección historia Cyzone */
+    .historia-contenido {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 40px;
+      flex-wrap: wrap;
+      height: 100%;
+    }
+
+    .historia-imagen img {
+      width: 400px;
+      height: auto;
+      border-radius: 20px;
+      object-fit: cover;
+      box-shadow: 0 0 15px rgba(178, 0, 110, 0.5);
+    }
+
+    .historia-texto {
+      max-width: 700px;
+    }
+
+    .historia-texto h3 {
+      margin: 0;
+      color: #b2006e;
+      font-size: 16px;
+      font-weight: normal;
+    }
+
+    .historia-texto h2 {
+      margin: 5px 0 15px 0;
+      font-weight: bold;
+      color: #800080;
+    }
+
+    .historia-texto p {
+      line-height: 1.5;
+    }
+
+    /* Formulario */
+    form.formulario {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      width: 100%;
+      max-width: 500px;
+      margin: 40px auto 60px auto;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    form.formulario h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: 700;
+      animation: textoColorAnimado 4s infinite alternate;
+      font-size: 28px;
+    }
+
+    @keyframes textoColorAnimado {
+      0% { color: #ffc0cb; }   /* rosado */
+      100% { color: #800080; } /* morado */
+    }
+
+    form.formulario label {
+      display: block;
+      margin-top: 15px;
+      color: #333;
+      font-weight: 600;
+    }
+
+    form.formulario input,
+    form.formulario textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-family: inherit;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+    }
+
+    form.formulario input:focus,
+    form.formulario textarea:focus {
+      outline: none;
+      border-color: #800080;
+      box-shadow: 0 0 5px #aa00aa;
+    }
+
+    form.formulario input[type="submit"] {
+      background-color: #800080;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 20px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: 8px;
+    }
+
+    form.formulario input[type="submit"]:hover {
+      background-color: #aa00aa;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #ffffff;
+      color: rgb(220, 103, 171);
+      padding: 20px 0;
+      font-family: Arial, sans-serif;
+      width: 100vw;
+      box-sizing: border-box;
+    }
+
+    footer > .content-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    footer strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    footer a {
+      color: rgb(138, 11, 77);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .historia-contenido {
+        flex-direction: column;
+        align-items: center;
+      }
+      .historia-imagen img {
+        width: 90%;
+        max-width: 400px;
+      }
+      form.formulario {
+        margin: 20px 10px 40px 10px;
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      header nav {
+        margin-top: 10px;
+      }
+      header nav a {
+        margin-left: 0;
+        margin-right: 20px;
+      }
+      footer > .content-wrapper {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="full-width-section">
+    <header class="content-wrapper">
+      <div>Cyzone</div>
+      <nav>
+        <a href="index.html">Inicio</a>
+        <a href="Producto.html">Productos</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </header>
+  </section>
+
+  <section class="full-width-section historia">
+    <div class="content-wrapper historia-contenido">
+      <div class="historia-imagen">
+        <img src="1.1.jpeg" alt="Foto Cyzone" />
+      </div>
+      <div class="historia-texto">
+        <h3>Cyzone</h3>
+        <h2>Contigo para ti💖</h2>
+        <p>
+          <strong>
+            Cyzone es una marca de belleza que forma parte del grupo Belcorp, fundada en el año 2000 en Perú,
+            con el objetivo de conectar con las mujeres jovenes de América Latina. Desde su inicios se ha destacado
+            por su enfoque fresco, divertido y autentico.
+          </strong>
+        </p>
+        <p>
+          Más allá de la cosmética, Cyzone ha promovido campañas de empoderamiento juvenil y ha sido una plataforma
+          de expresión para miles de jóvenes, consolidándose como un símbolo de identidad y estilo propio en toda
+          la región adicional a ello Comprometida con el bienestar animal, la marca ha obtenido la aprobación del
+          Programa Leaping Bunny, asegurando que sus productos no son testeados en animales.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <form class="formulario" action="procesar_formulario.php" method="post">
+    <h2>FORMULARIO DE CONTACTO</h2>
+
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" required />
+
+    <label for="email">Correo electrónico:</label>
+    <input type="email" id="email" name="email" required />
+
+    <label for="asunto">Asunto:</label>
+    <input type="text" id="asunto" name="asunto" required />
+
+    <label for="mensaje">Mensaje:</label>
+    <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+
+    <input type="submit" value="Enviar" />
+  </form>
+
+  <section class="full-width-section">
+    <footer class="content-wrapper">
+      <div>
+        <strong>Horario atención al cliente online:</strong>
+        <br />
+        De Lunes a Viernes<br />
+        7:30 a 14:45
+      </div>
+      <div>
+        <strong>Horario tienda física (Alicante):</strong>
+        <br />
+        De Lunes a Sábado<br />
+        10:00 a 14:00 / 16:30 a 20:30<br />
+        Teléfono <strong>635042044</strong>
+      </div>
+      <div>
+        Teléfono oficina: <strong>966147399</strong><br />
+        E-Mail:
+        <a href="mailto:info@kurogami.com">info@kurogami.com</a>
+      </div>
+    </footer>
+  </section>
+
+</body>
+</html>
